@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        containerView2.hidden = true
+        containerView2.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,119 +24,110 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func cubeDidPress(sender: AnyObject) {
+    @IBAction func cubeDidPress(_ sender: AnyObject) {
         
-        
-        
+        //have to switch it back if now
         if topView == true{
-            var animation = CATransition()
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = "alignedCube"
             
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = true
-            self.containerView2.hidden = false
+            self.containerView.isHidden = true
+            self.containerView2.isHidden = false
             topView = false
-        }
-        else
-        {
-            var animation = CATransition()
+        }else{
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = "alignedCube"
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = false
-            self.containerView2.hidden = true
+            self.containerView.isHidden = false
+            self.containerView2.isHidden = true
             topView = true
             
         }
 
     }
-    @IBAction func spewEffect(sender: AnyObject) {
+    @IBAction func spewEffect(_ sender: AnyObject) {
         
         
         
         if topView == true{
-            var animation = CATransition()
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = "oglFlip"
             
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = true
-            self.containerView2.hidden = false
+            self.containerView.isHidden = true
+            self.containerView2.isHidden = false
             topView = false
-        }
-        else
-        {
-            var animation = CATransition()
+        }else{
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = "oglFlip"
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = false
-            self.containerView2.hidden = true
+            self.containerView.isHidden = false
+            self.containerView2.isHidden = true
             topView = true
             
         }
 
     }
-    @IBAction func suckEffectDidPress(sender: UIButton) {
+    @IBAction func suckEffectDidPress(_ sender: UIButton) {
         
         
         if topView == true{
-            var animation = CATransition()
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
          
             animation.type = "suckEffect"
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = true
-            self.containerView2.hidden = false
+            self.containerView.isHidden = true
+            self.containerView2.isHidden = false
             topView = false
-        }
-        else
-        {
-            self.containerView.hidden = false
-            var animation = CATransition()
+        }else{
+            self.containerView.isHidden = false
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
        
             animation.type = "suckEffect"
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = false
-            self.containerView2.hidden = true
+            self.containerView.isHidden = false
+            self.containerView2.isHidden = true
             topView = true
             
         }
 
     }
-    @IBAction func flipDidPress(sender: AnyObject) {
+    @IBAction func flipDidPress(_ sender: AnyObject) {
         if topView == true{
 
         // try with container view
-        UIView.transitionWithView(self.mainContainer, duration: 0.6, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
-            self.containerView.hidden = true
-            self.containerView2.hidden = false
+        UIView.transition(with: self.mainContainer, duration: 0.6, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: {
+            self.containerView.isHidden = true
+            self.containerView2.isHidden = false
             }, completion: {
                 finished in
                 self.topView = false
         })
 
-        }
-        else
-        {
+        }else{
             // try with container view
-            UIView.transitionWithView(self.mainContainer, duration: 0.6, options: UIViewAnimationOptions.TransitionFlipFromRight, animations: {
-                self.containerView.hidden = false
-                self.containerView2.hidden = true
+            UIView.transition(with: self.mainContainer, duration: 0.6, options: UIViewAnimationOptions.transitionFlipFromRight, animations: {
+                self.containerView.isHidden = false
+                self.containerView2.isHidden = true
                 }, completion: {
                     finished in
                     self.topView = true
@@ -147,74 +138,67 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func rippleDidPress(sender: AnyObject) {
+    @IBAction func rippleDidPress(_ sender: AnyObject) {
         
         
         if topView == true{
-            var animation = CATransition()
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = "rippleEffect"
             
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = true
-            self.containerView2.hidden = false
+            self.containerView.isHidden = true
+            self.containerView2.isHidden = false
             topView = false
-        }
-        else
-        {
-            var animation = CATransition()
+        }else{
+            let animation = CATransition()
             animation.duration = 0.6
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = "rippleEffect"
-            mainContainer.layer.addAnimation(animation, forKey: nil)
+            mainContainer.layer.add(animation, forKey: nil)
             
-            self.containerView.hidden = false
-            self.containerView2.hidden = true
+            self.containerView.isHidden = false
+            self.containerView2.isHidden = true
             topView = true
             
         }
     }
     
-    @IBAction func pageCurlDidPress(sender: AnyObject) {
+    @IBAction func pageCurlDidPress(_ sender: AnyObject) {
         
-        containerView2.hidden = false
+        containerView2.isHidden = false
         if topView == true{
-            var transition = CATransition()
+            let transition = CATransition()
             transition.duration = 0.6
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             transition.type = "pageCurl"
             transition.subtype = kCATransitionFromBottom
             transition.fillMode = kCAFillModeForwards
-            transition.removedOnCompletion = false
+            transition.isRemovedOnCompletion = false
             transition.startProgress = 0
             transition.endProgress = 0.9
-            self.mainContainer.layer.addAnimation(transition, forKey: nil)
+            self.mainContainer.layer.add(transition, forKey: nil)
             topView = false
             pageCurled = true
-            self.mainContainer.bringSubviewToFront(containerView2)
-        }
-        else if pageCurled == true
-        {
-            var transition = CATransition()
+            self.mainContainer.bringSubview(toFront: containerView2)
+        }else if pageCurled == true{
+            let transition = CATransition()
             transition.duration = 0.6
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             transition.type = "pageUnCurl"
             //transition.subtype = kCATransitionFromTop
             transition.fillMode = kCAFillModeForwards
-            transition.removedOnCompletion = true
+            transition.isRemovedOnCompletion = true
             transition.startProgress = 0.1
-            self.mainContainer.layer.addAnimation(transition, forKey: nil)
+            self.mainContainer.layer.add(transition, forKey: nil)
             topView = true
-            self.mainContainer.sendSubviewToBack(containerView2)
+            self.mainContainer.sendSubview(toBack: containerView2)
             pageCurled = false
-            containerView2.hidden = true
-        }
-        else
-        {
+            containerView2.isHidden = true
+        }else{
             self.flipDidPress(self)
-        
             self.delay(0.6, closure: {
                 self.pageCurlDidPress(self)
             })
@@ -225,14 +209,10 @@ class ViewController: UIViewController {
     }
     
 
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
             
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
 
 }
